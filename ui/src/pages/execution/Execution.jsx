@@ -32,6 +32,7 @@ import { useWorkflow } from "../../data/workflow";
 
 const maxWindowWidth = window.innerWidth;
 const INIT_DRAWER_WIDTH = 650;
+const REFRESH_INTERVAL_MS = 3000;
 
 const useStyles = makeStyles({
   header: sharedStyles.header,
@@ -121,7 +122,7 @@ export default function Execution() {
     data: execution,
     isFetching,
     refetch: refresh,
-  } = useWorkflow(match.params.id);
+  } = useWorkflow(match.params.id, { refetchInterval: REFRESH_INTERVAL_MS });
 
   const [isFullWidth, setIsFullWidth] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
