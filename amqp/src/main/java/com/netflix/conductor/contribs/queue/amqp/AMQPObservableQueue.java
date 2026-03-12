@@ -191,7 +191,7 @@ public class AMQPObservableQueue implements ObservableQueue {
         final List<String> failedMessages = new ArrayList<>();
         if (!useExchange) {
             // only attempt to ack messages when using queues.
-            // it make no sense to ack over exchange since the message is no longer there.
+            // it makes no sense to ack over exchange since the messages are no longer there.
             for (final Message message : messages) {
                 try {
                     ackMsg(message);
