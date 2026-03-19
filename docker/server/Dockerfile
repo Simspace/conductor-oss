@@ -56,14 +56,12 @@ RUN if [ "$PREBUILT" = "false" ]; then \
 # ===========================================================================================================
 # 2. Final stage
 # ===========================================================================================================
-FROM debian:stable-slim
+FROM alpine:3.22
 
 LABEL maintainer="Orkes OSS <oss@orkes.io>"
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends openjdk-21-jre-headless nginx curl ca-certificates \
-    && rm -f /etc/nginx/sites-enabled/default \
-    && rm -rf /var/lib/apt/lists/*
+# Install runtime dependencies
+RUN apk add --no-cache openjdk21-jre-headless nginx curl ca-certificates
 
 # Make app folders
 RUN mkdir -p /app/config /app/logs /app/libs
@@ -77,7 +75,7 @@ COPY --from=builder /conductor/server/build/libs/*boot*.jar /app/libs/conductor-
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 COPY --from=ui-builder /conductor/ui/build .
-COPY --from=ui-builder /conductor/docker/server/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=ui-builder /conductor/docker/server/nginx/nginx.conf /etc/nginx/http.d/default.conf
 
 # Copy the files for the server into the app folders
 RUN chmod +x /app/startup.sh
