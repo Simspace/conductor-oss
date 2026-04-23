@@ -9,7 +9,7 @@
 # ===========================================================================================================
 # 0. Builder stage
 # ===========================================================================================================
-FROM azul/zulu-openjdk-debian:21 AS builder
+FROM azul/zulu-openjdk-debian:21.0.10 AS builder
 
 ARG PREBUILT=false
 ARG INDEXING_BACKEND=elasticsearch
