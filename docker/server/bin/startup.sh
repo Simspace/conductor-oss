@@ -37,4 +37,6 @@ fi
 
 echo "Using java options config: $JAVA_OPTS"
 
-java ${JAVA_OPTS} -jar -DCONDUCTOR_CONFIG_FILE=$config_file conductor-server.jar 2>&1 | tee -a /app/logs/server.log
+export CONDUCTOR_CONFIG_FILE=$config_file
+echo "Handing off PID 1 to the Conductor JVM"
+exec java ${JAVA_OPTS:-} -jar conductor-server.jar
