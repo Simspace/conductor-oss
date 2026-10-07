@@ -32,6 +32,7 @@ ext {
     revHamcrestAllMatchers = '1.8'
     revHealth = '1.1.4'
     revPostgres = '42.7.11'
+    revBouncyCastle = '1.81.1' // Upgraded due to critical CVE-2025-14813
 
     // -----------------------------------------------------------------
     // PINNED DEPENDENCIES — do not upgrade without reading the notes.
