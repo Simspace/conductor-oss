@@ -31,7 +31,7 @@ ext {
     revGuava = '33.2.1-jre'
     revHamcrestAllMatchers = '1.8'
     revHealth = '1.1.4'
-    revPostgres = '42.7.11'
+    revPostgres = '42.7.12' // Upgraded due to critical CVE-2026-54291
     revBouncyCastle = '1.81.1' // Upgraded due to critical CVE-2025-14813
 
     // -----------------------------------------------------------------
