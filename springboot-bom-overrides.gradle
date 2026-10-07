@@ -16,7 +16,11 @@
 // https://docs.spring.io/spring-boot/3.3/appendix/dependency-versions/properties.html.
 
 // Keep server runtime dependencies on patched versions until the Spring Boot BOM includes them.
-ext['spring-framework.version'] = '6.2.19'
+// Keep Spring Boot at 3.3.13 (both plugin declarations in build.gradle) with
+// Framework 6.1.21 to avoid CVE-2026-47890, which affects Framework 6.2.0-6.2.19.
+// https://spring.io/security/cve-2026-47890/
+// Review this pairing together when upgrading Spring Boot.
+ext['spring-framework.version'] = '6.1.21'
 ext['spring-security.version'] = '6.5.11'
 ext['log4j2.version'] = '2.25.4'
 ext['netty.version'] = '4.1.136.Final'
