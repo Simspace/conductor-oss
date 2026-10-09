@@ -57,6 +57,13 @@ dependencies {
     // interpreter, which is 10-100x slower than the JIT-compiled path.
     implementation("org.graalvm.truffle:truffle-runtime:${revGraalVM}")
 
+    // Upgrade GraalPy's transitive Bouncy Castle dependencies while allowing newer versions.
+    constraints {
+        implementation "org.bouncycastle:bcprov-jdk18on:${revBouncyCastle}"
+        implementation "org.bouncycastle:bcpkix-jdk18on:${revBouncyCastle}"
+        implementation "org.bouncycastle:bcutil-jdk18on:${revBouncyCastle}"
+    }
+
     // JAXB is not bundled with Java 11, dependencies added explicitly
     // These are needed by Apache BVAL
     implementation "jakarta.xml.bind:jakarta.xml.bind-api:${revJAXB}"
