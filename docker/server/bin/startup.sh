@@ -29,6 +29,8 @@ if [ -z "$CONFIG_PROP" ];
     echo "No CONFIG_PROP set — using built-in defaults (SQLite, no external dependencies required)";
     exec java ${JAVA_OPTS} -jar conductor-server.jar
   else
-    echo "Using config: $CONFIG_PROP";
-    exec java ${JAVA_OPTS} -DCONDUCTOR_CONFIG_FILE=/app/config/$CONFIG_PROP -jar conductor-server.jar
+		echo "Using config: $CONFIG_PROP";
+		export CONDUCTOR_CONFIG_FILE=/app/config/$CONFIG_PROP
+		echo "Handing off PID 1 to the Conductor JVM"
+		exec java ${JAVA_OPTS:-} -jar conductor-server.jar
 fi
