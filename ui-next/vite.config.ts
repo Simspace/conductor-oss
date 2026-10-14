@@ -13,7 +13,7 @@ const packageDir = __dirname;
 
 // Plugin to inject build-time hash into context.js script tag
 function contextJsHashPlugin(): Plugin {
-  const buildHash = createHash("md5")
+  const buildHash = createHash("sha256")
     .update(Date.now().toString())
     .update(process.pid?.toString() || "")
     .digest("hex")
