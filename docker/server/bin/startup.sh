@@ -18,7 +18,7 @@ echo "Starting Conductor server"
 
 echo "Running Nginx in background"
 # Start nginx as daemon
-nginx
+nginx -e /dev/stderr
 
 # Start the server
 cd /app/libs
