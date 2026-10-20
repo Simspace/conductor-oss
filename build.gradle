@@ -126,6 +126,9 @@ allprojects {
 
         // Security: force minimum versions for vulnerable transitive dependencies
         constraints {
+            implementation('com.github.junrar:junrar:7.6.1') {
+                because 'CVE-2026-97370: infinite loop during RAR4 extraction'
+            }
             implementation('org.apache.tika:tika-core:3.2.2') {
                 because 'CVE-2025-66516: tika-parser-pdf-module vulnerability'
             }
