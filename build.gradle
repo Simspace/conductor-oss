@@ -158,6 +158,11 @@ allprojects {
             implementation('com.microsoft.sqlserver:mssql-jdbc:12.8.2.jre11') {
                 because 'CVE-2025-59250: improper input validation'
             }
+            implementation('org.bouncycastle:bcprov-jdk18on:1.80.2') {
+                because 'CVE-2025-14813: GOST CTR counter overflow'
+            }
+            implementation('org.bouncycastle:bcpkix-jdk18on:1.80.2')
+            implementation('org.bouncycastle:bcutil-jdk18on:1.80.2')
         }
     }
     // processes additional configuration metadata json file as described here
